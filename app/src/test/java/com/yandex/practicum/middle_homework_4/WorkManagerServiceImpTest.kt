@@ -64,7 +64,7 @@ class WorkManagerServiceImpTest {
 
         val workManager = WorkManager.getInstance(context)
         val workInfo =
-            workManager.getWorkInfosForUniqueWork(WorkManagerServiceImp.REFRESH_WORK_NAME).get()
+            workManager.getWorkInfosByTag(WorkManagerServiceImp.REFRESH_WORK_NAME).get()
         assertEquals(WorkInfo.State.CANCELLED, workInfo[0].state)
     }
 }
