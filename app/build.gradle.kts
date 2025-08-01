@@ -54,6 +54,7 @@ dependencies {
     implementation(libs.androidx.room.ktx)
     implementation(libs.androidx.room.paging)
     kapt(libs.room.kapt)
+    implementation(libs.core.ktx)
     implementation(libs.squareup.retrofit2)
     implementation(libs.koin.compose)
 //    implementation(libs.koin.android)

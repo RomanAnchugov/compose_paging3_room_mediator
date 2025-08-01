@@ -35,23 +35,22 @@ fun NewsScreen(
 ) {
     val lifecycleOwner = LocalLifecycleOwner.current
     val news: LazyPagingItems<News> = appViewModel.getNews().collectAsLazyPagingItems()
-    Column(
+
+    LazyColumn(
+        verticalArrangement = Arrangement.spacedBy(12.dp),
         modifier = modifier
             .fillMaxSize()
             .padding(horizontal = 16.dp, vertical = 8.dp)
+            .padding(bottom = 96.dp)
     ) {
-        LazyColumn(
-            verticalArrangement = Arrangement.spacedBy(12.dp),
-            modifier = Modifier.padding(bottom = 96.dp)
-        ) {
-            items(
-                count = news.itemCount,
-                key = news.itemKey()
-            ) { it ->
-                news[it]?.let { RenderNews(it) }
-            }
+        items(
+            count = news.itemCount,
+            key = news.itemKey()
+        ) { it ->
+            news[it]?.let { RenderNews(it) }
         }
     }
+
     DisposableEffect(lifecycleOwner) {
         val observer = LifecycleEventObserver { _, event ->
             if (event == Lifecycle.Event.ON_START) {
